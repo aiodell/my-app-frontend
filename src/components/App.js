@@ -31,7 +31,9 @@ function App() {
     .then(sponsorData => setSponsors(sponsorData))
   }, [] );
 
-
+  function submitFunction(obj){
+    setSponsors([...sponsors, obj])
+  }
 
   return (
     <div>
@@ -44,7 +46,7 @@ function App() {
           <RegisterNewFox />
         </Route>
         <Route exact path="/addsponsor">
-          <RegisterSponsor />
+          <RegisterSponsor submitFunction={submitFunction}/>
           <SponsorContainer sponsors = { sponsors }/>
         </Route>
         <Route exact path="/">

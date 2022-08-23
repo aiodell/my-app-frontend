@@ -18,6 +18,10 @@ function App() {
     .then(foxData => setFoxes(foxData))
   }, [] );
 
+  const addFox = (newFox) => {
+    setFoxes([newFox, ...foxes])
+  }
+
   return (
     <div>
       <NavBar />

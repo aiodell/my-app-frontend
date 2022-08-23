@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 function RegisterNewFox() {
+    
     return(
         <div>
-            "Fox Form"
+            "Register A New Fox Buddy"
+
         </div>
     )
 }

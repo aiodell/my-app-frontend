@@ -1,9 +1,9 @@
 import React from "react";
 
-function FoxContainer(){
+function FoxContainer(  {foxes} ){
     return(
         <div>
-            "Cute Foxes Placeholder"
+            "Cute Foxes Live Here!"
         </div>
     )
 }

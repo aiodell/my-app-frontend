@@ -1,19 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import NavBar from './NavBar';
 import { Route, Switch } from 'react-router-dom';
 import Home from './Home';
 import FoxContainer from './FoxContainer';
 import RegisterNewFox from './RegisterNewFox';
-import RegisterSponser from './RegisterSponsor';
+import RegisterSponsor from './RegisterSponsor';
 import '../styles.css';
 
 function App() {
+
+  const [foxes, setfoxes ] = useState( [] )
+  
+  // get all foxes
+  useEffect( () => {
+    fetch( 'http://localhost:9292/foxes' )
+    .then ( res => res.json() )
+    .then(foxData => setfoxes(foxData))
+  }, [] );
+
   return (
     <div>
       <NavBar />
       <Switch>
         <Route exact path="/foxes">
-          <FoxContainer />
+          <FoxContainer foxes = { foxes }/>
         </Route>
         <Route exact path="/addfox">
           <RegisterNewFox />
@@ -29,3 +39,4 @@ function App() {
   );
 }
 
+export default App;

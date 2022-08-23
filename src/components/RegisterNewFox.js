@@ -1,43 +1,35 @@
 import React, { useState } from "react";
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container'
 
-function RegisterNewFox({ addFox, foxes }) {
-    const [foxData, setFoxData] = useState({ });
+function RegisterNewFox({ addFox }) {
+    const [ name, setName ] = useState('')
+    const [ age, setAge ] = useState(0)
+    const [ personality, setPersonality ] = useState('')
+    const [ favoriteToy, setFavoriteToy ] = useState('')
+    const [ image, setImage ] = useState('')
 
     // submit the fox information
-    const handleSubmit = (e) => {
+    function handleSubmit(e) {
         e.preventDefault();
+        const newFox = {
+            name: name,
+            age: age,
+            personality: personality,
+            favorite_toy: favoriteToy,
+            image_url: image
+        }
 
-          fetch("http://localhost:9292/foxes",{
-          method : "POST",
-          headers : { "Content-Type" : "application/json"},
-          body : JSON.stringify(foxData)
+        fetch('http://localhost:9292/foxes', {
+            method : "POST",
+            headers : { "Content-Type" : "application/json"},
+            body : JSON.stringify(newFox)
         })
-        .then(resp => resp.json())
-        .then((foxData) => {
-          addFox(foxData);
-          setFoxData({ });
-          e.target.reset();
-        })
+
+        .then(res => res.json())
+        .then((foxData) => {addFox(foxData)})
+        e.target.reset()
     }
-
-    // handle change 
-    function handleChange(e){
-      setFoxData({
-        ...foxData,
-        [e.target.id] : e.target.value
-      })
-    }
-
-    const personalityDropDown = foxes.map( fox => {
-        const personality = fox.personality;
-
-        return(
-            <option key ={ personality } value={ personality }>{ personality }</option>
-        )
-    })
 
     return(
         <Container>
@@ -45,43 +37,43 @@ function RegisterNewFox({ addFox, foxes }) {
             <Form onSubmit = { handleSubmit }>
 
                 {/* Enter fox name */}
-                <Form.Group className="fox-name" controlID="name" onChange = { handleChange }>
-                    <Form.Label>Fox Name</Form.Label>
+                <Form.Group className="mb-3" controlId="name" onChange= {(e) => setName(e.target.value)}>
+                    <Form.Label>Name: </Form.Label>
                     <Form.Control type="text" placeholder= "Fox name"/>
                 </Form.Group>
 
                 {/* Enter fox age */}
-                <Form.Group className="fox-age" controlID="age" onChange = { handleChange }>
-                    <Form.Label>Fox Name</Form.Label>
+                <Form.Group className="mb-3" controlId="age" onChange= {(e) => setAge(e.target.value)}>
+                    <Form.Label>Age: </Form.Label>
                     <Form.Control type="number" placeholder= "Fox age"/>
                 </Form.Group>
-
+                
                 {/* Enter fox toy */}
-                <Form.Group className="fox-fav-toy" controlID="favorite_toy" onChange = { handleChange }>
-                    <Form.Label>Fox Name</Form.Label>
+                <Form.Group className="mb-3" controlId="age" onChange= {(e) => setFavoriteToy(e.target.value)}>
+                    <Form.Label>Favorite Toy: </Form.Label>
                     <Form.Control type="text" placeholder= "Favorite toy"/>
                 </Form.Group>
 
-                {/* Enter fox personality and add drop down to maintain uniform personality */}
-                <Form.Group className="personality" controlID="personality" onChange = { handleChange }>
-                    <Form.Label>Fox Name</Form.Label>
-                    <Form.Select>
-                        <option>Personality</option>
-                        { personalityDropDown }
-                    </Form.Select>
-                    <Form.Control type="text" placeholder= "Personality"/>
+                {/* Enter persoanality */}
+                <Form.Group className="mb-3" controlId="personality" onChange= {(e) => setPersonality(e.target.value)}>
+                    <Form.Label>Personality: </Form.Label>
+                    <Form.Control type="text" placeholder= "Enter personality"/>
                 </Form.Group>
 
                 {/* Enter fox personality */}
-                <Form.Group className="fox-name" controlID="name" onChange = { handleChange }>
-                    <Form.Label>Fox Name</Form.Label>
-                    <Form.Control type="text" placeholder= "Fox name"/>
+                <Form.Group className="fox-image" controlid="image_url" onChange= {(e) => setImage(e.target.value)}>
+                    <Form.Label>Image: </Form.Label>
+                    <Form.Control type="text" placeholder= "Show the floof"/>
                 </Form.Group>
 
-                <Form.Group className="fox-name" controlID="name" onChange = { handleChange }>
-                    <Form.Label>Fox Name</Form.Label>
-                    <Form.Control type="text" placeholder= "Fox name"/>
-                </Form.Group>
+                <br />
+                <input
+                    type="submit"
+                    name="submit"
+                    value="Register"
+                    className="submit"
+                />
+
             </Form>
         </Container>
     )

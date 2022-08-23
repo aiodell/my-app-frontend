@@ -13,9 +13,7 @@ function FoxContainer( {foxes} ){
             />
         )
     })
-
-    console.log(displayFoxes)
-
+    
     return(
         <div>
             "Cute Foxes Live Here!"

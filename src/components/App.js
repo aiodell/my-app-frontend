@@ -21,7 +21,7 @@ function App() {
   }, [] );
 
   const addFox = (newFox) => {
-    setFoxes([newFox, ...foxes])
+    setFoxes([...foxes, newFox])
   }
 
   // get all sponsors
@@ -43,7 +43,9 @@ function App() {
           <FoxContainer foxes = { foxes }/>
         </Route>
         <Route exact path="/addfox">
-          <RegisterNewFox addFox = { addFox }/>
+          <RegisterNewFox 
+          addFox = { addFox }
+          foxes = { foxes }/>
         </Route>
         <Route exact path="/addsponsor">
           <RegisterSponsor submitFunction={submitFunction}/>

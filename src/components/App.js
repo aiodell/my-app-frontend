@@ -6,11 +6,13 @@ import FoxContainer from './FoxContainer';
 import RegisterNewFox from './RegisterNewFox';
 import RegisterSponsor from './RegisterSponsor';
 import '../styles.css';
+import SponsorContainer from './SponsorContainer';
 
 function App() {
 
   const [foxes, setFoxes ] = useState( [] )
-  
+  const [sponsors, setSponsors] = useState ( [] )
+
   // get all foxes
   useEffect( () => {
     fetch( 'http://localhost:9292/foxes')
@@ -21,6 +23,15 @@ function App() {
   const addFox = (newFox) => {
     setFoxes([newFox, ...foxes])
   }
+
+  // get all sponsors
+  useEffect( () => {
+    fetch( 'http://localhost:9292/sponsors')
+    .then ( res => res.json() )
+    .then(sponsorData => setSponsors(sponsorData))
+  }, [] );
+
+
 
   return (
     <div>
@@ -34,6 +45,7 @@ function App() {
         </Route>
         <Route exact path="/addsponsor">
           <RegisterSponsor />
+          <SponsorContainer sponsors = { sponsors }/>
         </Route>
         <Route exact path="/">
           <Home />

@@ -1,12 +1,43 @@
 import React from "react";
+import { useState } from "react";
 
-function FoxCard({name, favoriteToy, personality, image}) {
+// const Details = ({fox}) => {
+//     return(
+//      <div>
+//          <h1>{fox.age}</h1>
+//      </div>
+//     ) 
+// }
+
+// console.log(Details)
+
+
+
+// const NoDetails = ({fox}) => {
+//     return(
+//         <img src ={fox.image_url} alt = 'cute fox'/>
+//     )
+// }
+
+
+
+
+function FoxCard({fox}) { 
+
+  const [showDetails, setShowDetails] = useState(false)
+
+  const toggleCard = () => {
+    setShowDetails((previousDetails)=> !previousDetails)
+  }
+
     return(
-        <div>
-            <h1>Name: {name}</h1>
-            <img src={image} alt="cute fox"/>
-            <h3>Favorite Toy: {favoriteToy}</h3>
-            <h3>Personality: {personality}</h3>
+        <div >
+            <h1>{fox.name}</h1>
+            <img onClick={toggleCard} src={fox.image_url} alt="cute fox">
+             {/* {showDetails ? <Details /> : "hi" } */}
+            </img>
+          
+          
         </div>
     )
 }

@@ -6,15 +6,15 @@ function FoxContainer( {foxes} ){
         return(
             <FoxCard 
             key = {fox.id}
-            name = {fox.name}
-            favoriteToy = {fox.favorite_toy}
-            personality = { fox.personality}
-            image = {fox.image_url}
+            fox = {fox}
+            // name = {fox.name}
+            // age = {fox.age}
+            // favoriteToy = {fox.favorite_toy}
+            // personality = { fox.personality}
+            // image = {fox.image_url}
             />
         )
     })
-
-    console.log(displayFoxes)
 
     return(
         <div>

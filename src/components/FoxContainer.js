@@ -7,11 +7,6 @@ function FoxContainer( {foxes} ){
             <FoxCard 
             key = {fox.id}
             fox = {fox}
-            // name = {fox.name}
-            // age = {fox.age}
-            // favoriteToy = {fox.favorite_toy}
-            // personality = { fox.personality}
-            // image = {fox.image_url}
             />
         )
     })

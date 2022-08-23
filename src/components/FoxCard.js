@@ -1,26 +1,6 @@
 import React from "react";
 import { useState } from "react";
 
-// const Details = ({fox}) => {
-//     return(
-//      <div>
-//          <h1>{fox.age}</h1>
-//      </div>
-//     ) 
-// }
-
-// console.log(Details)
-
-
-
-// const NoDetails = ({fox}) => {
-//     return(
-//         <img src ={fox.image_url} alt = 'cute fox'/>
-//     )
-// }
-
-
-
 
 function FoxCard({fox}) { 
 
@@ -30,12 +10,27 @@ function FoxCard({fox}) {
     setShowDetails((previousDetails)=> !previousDetails)
   }
 
+
+    const details =  (
+        <div>
+            <p>Age: {fox.age}</p>
+            <p>Personality: {fox.personality}</p>
+            <p>Favorite Toy: {fox.favorite_toy}</p>
+
+        </div>
+
+    )
+    
+    const noDetails = (
+    <h1></h1>
+    )   
+
     return(
         <div >
             <h1>{fox.name}</h1>
-            <img onClick={toggleCard} src={fox.image_url} alt="cute fox">
-             {/* {showDetails ? <Details /> : "hi" } */}
-            </img>
+            <img onClick={toggleCard} src={fox.image_url} alt="cute fox"/>
+             {showDetails ? details : noDetails}
+         
           
           
         </div>

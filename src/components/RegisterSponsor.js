@@ -12,6 +12,8 @@ function RegisterSponsor({submitFunction}){
         const newSponsor = {
             name: inputName,
             location: inputLocation,
+            image_url: inputImage,
+            num_of_foxes: 0,
         }
     
 
@@ -44,6 +46,11 @@ function RegisterSponsor({submitFunction}){
                     <Form.Control type="text" placeholder="Enter Location" />
                 </Form.Group>
                 <br />
+                <Form.Group className="input-text" controlId="imageUrl"  >
+                    <Form.Label>Sponsor Picture</Form.Label>
+                    <Form.Control type="text" placeholder="Picture...." onChange={(e) => setInputImage(e.target.value)} />
+                 </Form.Group>
+        <br />
                 <input
                     type="submit"
                     name="submit"

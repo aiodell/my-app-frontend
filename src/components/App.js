@@ -10,7 +10,8 @@ import '../styles.css';
 function App() {
 
   const [foxes, setFoxes ] = useState( [] )
-  
+  const [sponsors, setSponsors] = useState ( [] )
+
   // get all foxes
   useEffect( () => {
     fetch( 'http://localhost:9292/foxes')
@@ -21,6 +22,15 @@ function App() {
   const addFox = (newFox) => {
     setFoxes([newFox, ...foxes])
   }
+
+  // get all sponsors
+  useEffect( () => {
+    fetch( 'http://localhost:9292/sponsors')
+    .then ( res => res.json() )
+    .then(sponsorData => setSponsors(sponsorData))
+  }, [] );
+
+
 
   return (
     <div>
@@ -33,7 +43,7 @@ function App() {
           <RegisterNewFox />
         </Route>
         <Route exact path="/addsponsor">
-          <RegisterSponsor />
+          <RegisterSponsor sponsors = { sponsors }/>
         </Route>
         <Route exact path="/">
           <Home />

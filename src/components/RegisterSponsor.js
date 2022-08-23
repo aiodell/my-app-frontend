@@ -1,6 +1,7 @@
 import React from "react";
 
-function RegisterSponsor(){
+function RegisterSponsor(  ){
+ 
     return(
         <div>
             "Sponsor Form"
@@ -9,3 +10,4 @@ function RegisterSponsor(){
 }
 
 export default RegisterSponsor
+

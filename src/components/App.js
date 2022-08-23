@@ -30,7 +30,7 @@ function App() {
           <FoxContainer foxes = { foxes }/>
         </Route>
         <Route exact path="/addfox">
-          <RegisterNewFox />
+          <RegisterNewFox addFox = { addFox }/>
         </Route>
         <Route exact path="/addsponsor">
           <RegisterSponsor />

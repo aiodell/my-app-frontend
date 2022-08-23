@@ -6,6 +6,7 @@ import FoxContainer from './FoxContainer';
 import RegisterNewFox from './RegisterNewFox';
 import RegisterSponsor from './RegisterSponsor';
 import '../styles.css';
+import SponsorContainer from './SponsorContainer';
 
 function App() {
 
@@ -43,7 +44,8 @@ function App() {
           <RegisterNewFox />
         </Route>
         <Route exact path="/addsponsor">
-          <RegisterSponsor sponsors = { sponsors }/>
+          <RegisterSponsor />
+          <SponsorContainer sponsors = { sponsors }/>
         </Route>
         <Route exact path="/">
           <Home />

@@ -9,13 +9,13 @@ import '../styles.css';
 
 function App() {
 
-  const [foxes, setfoxes ] = useState( [] )
+  const [foxes, setFoxes ] = useState( [] )
   
   // get all foxes
   useEffect( () => {
-    fetch( 'http://localhost:9292/foxes' )
+    fetch( 'http://localhost:9292/foxes')
     .then ( res => res.json() )
-    .then(foxData => setfoxes(foxData))
+    .then(foxData => setFoxes(foxData))
   }, [] );
 
   return (

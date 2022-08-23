@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.submit {
+  background-color: blue;
+  font-size: large;
+  padding : 5px 15px; 
+  background: blue; 
+  border:0 none;
+  cursor:pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 7px;
+  color: white; 
+} 

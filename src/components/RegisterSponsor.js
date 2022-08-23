@@ -2,9 +2,10 @@ import React from "react";
 import Form from 'react-bootstrap/Form';
 import { useState } from "react";
 
-function RegisterSponsor(){
+function RegisterSponsor({submitFunction}){
     const [inputName, setInputName] = useState('')
     const [inputLocation, setInputLocation] = useState('')
+    const [inputImage, setInputImage]= useState('')
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -12,9 +13,9 @@ function RegisterSponsor(){
             name: inputName,
             location: inputLocation,
         }
-    }
+    
 
-    fetch( 'http://localhost:9292/addsponsors', {
+    fetch( 'http://localhost:9292/sponsors', {
         method: "POST",
         headers: {
           'Accept': 'application.json',
@@ -27,11 +28,11 @@ function RegisterSponsor(){
   
       submitFunction(newSponsor)
       e.target.reset()
-    
+    }
 
     return(
         <div>
-            <Form>
+            <Form onSubmit={handleSubmit}>
                 <h3>Sponsor Sign Up</h3>
                 <Form.Group className="input-text" controlID="name" >
                     <Form.Label>Name</Form.Label>

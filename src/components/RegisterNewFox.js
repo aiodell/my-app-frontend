@@ -20,7 +20,7 @@ function RegisterNewFox({ addFox }) {
           .then((foxData) => {
             addFox(foxData)
             setFormData({ })
-            e.target.reset
+            e.target.reset()
           })
     }
 

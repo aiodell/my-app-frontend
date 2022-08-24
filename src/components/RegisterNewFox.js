@@ -21,6 +21,10 @@ function RegisterNewFox({ addFox }) {
           .then((foxData) => {
             addFox(foxData)
             setFormData({ })
+<<<<<<< HEAD
+=======
+            e.target.reset()
+>>>>>>> 7471bf126c7b16048aca61f85979369d83cbd739
           })
           e.target.reset()
     }

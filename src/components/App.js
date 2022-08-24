@@ -6,7 +6,6 @@ import { Route, Switch } from 'react-router-dom';
 import FoxContainer from './FoxContainer';
 import RegisterNewFox from './RegisterNewFox';
 import RegisterSponsor from './RegisterSponsor';
-
 import SponsorContainer from './SponsorContainer';
 import UpdateFox from './UpdateFox';
 
@@ -44,7 +43,8 @@ function App() {
   }
 
   function onUpdateFox(updatedFox){
-    setFoxes()
+    const freshFox = foxes.map(fox => fox.id === updatedFox.id ? updatedFox : fox)
+    setFoxes(freshFox)
   }
 
   return (
@@ -55,7 +55,6 @@ function App() {
           <FoxContainer 
           foxes = { foxes }
           handleDeleteClick = {handleDeleteClick}
-          sponsors = { sponsors }
           />
         </Route>
         <Route exact path="/addfox">
@@ -66,6 +65,9 @@ function App() {
         <Route exact path="/addsponsor">
           <RegisterSponsor submitFunction={submitFunction}/>
           <SponsorContainer sponsors = { sponsors }/>
+        </Route>
+        <Route exact path="/foxes/:id">
+            <UpdateFox onUpdateFox = { onUpdateFox } />
         </Route>
         <Route exact path="/">
           <Home />

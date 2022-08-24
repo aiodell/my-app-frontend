@@ -1,85 +1,75 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import { useHistory } from "react-router-dom";
 
-function UpdateFox({ fox, onUpdateFox }) {
+function UpdateFox({ onUpdateFox }) {
+    const [ fox, setFox ] = useState([])
     const [ formData, setFormData ] = useState({ })
-    const [ setFoxes, setFoxData ] = useState([])
-    const {id} = fox
 
+    let { id } = useParams();
+    
     // pull for the selected fox
     useEffect( () => {
     fetch(`http://localhost:9292/foxes/${id}`)
       .then( res => res.json() )
-      .then( fox => {setFoxes(fox)})
+      .then( fox => {setFox(fox)})
     }, [ id ])
-    
-    const handleSubmit = (e) => {
-        e.preventDefault();
 
-        fetch(`http://localhost:9292/foxes/${id}`,{
-            method: "PATCH",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(formData)
-            })
-            .then((r) => r.json())
-             .then((updatedFoxes) => {
-                onUpdateFox(updatedFoxes)
-                setFormData({ })
-            })
-            e.target.reset()
+    function updateFox(e) {
+      e.preventDefault()
+      fetch(`http://localhost:9292/foxes/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+      .then(res => res.json() )
+      .then( updatedFox => {
+        onUpdateFox(updatedFox);
+      })
+       e.target.reset()
     }
 
     function handleChange(e){ setFormData({...formData, [e.target.id] : e.target.value }) }
 
-    // redirect the page to the fox page
-    const history = useHistory()
-    const changeRoute = () =>{ 
-        let path = `/foxes`; 
-        history.push(path);
-    }
-
     return(
         <Container>
-            <h1>Register A New Fox Buddy!</h1>
-            <Form onSubmit = { handleSubmit }>
-
-                {/* Enter fox name */}
-                <Form.Group className="mb-3" controlId="name" onChange= { handleChange }>
-                    <Form.Label>Name: </Form.Label>
-                    <Form.Control type="text" placeholder= "Fox name"/>
-                </Form.Group>
+            <h1>Update {fox.name}'s infomation!</h1>
+            <Form onSubmit = { updateFox }>
 
                 {/* Enter fox age */}
-                <Form.Group className="mb-3" controlId="age" onChange= { handleChange }>
+                <Form.Group className="mb-3" controlId="age" onChange={ handleChange }>
                     <Form.Label>Age: </Form.Label>
-                    <Form.Control type="number" placeholder= "Fox age"/>
+                    <Form.Control type="number"/>
                 </Form.Group>
                 
                 {/* Enter fox toy */}
-                <Form.Group className="mb-3" controlId="favorite_toy" onChange= { handleChange }>
+                <Form.Group className="mb-3" controlId="favorite_toy" onChange={ handleChange }>
                     <Form.Label>Favorite Toy: </Form.Label>
-                    <Form.Control type="text" placeholder= "Favorite toy"/>
+                    <Form.Control type="text"/>
                 </Form.Group>
 
                 {/* Enter personality */}
-                <Form.Group className="mb-3" controlId="personality" onChange= { handleChange }>
+                <Form.Group className="mb-3" controlId="personality" onChange={ handleChange }>
                     <Form.Label>Personality: </Form.Label>
-                    <Form.Control type="text" placeholder= "Enter personality"/>
+                    <Form.Control type="text"/>
                 </Form.Group>
 
                 {/* Enter fox personality */}
-                <Form.Group className="fox-image" controlid="image_url" onChange= { handleChange }>
+                <Form.Group className="fox-image" controlId="image_url" onChange={ handleChange }>
                     <Form.Label>Image: </Form.Label>
-                    <Form.Control type="text" placeholder= "Show the floof"/>
+                    <Form.Control type="text"/>
                 </Form.Group>
                 <br />
-                <Button type ="submit" className = "submit" onClick={changeRoute}>Register Fox</Button>
+                <Button type ="submit" className="submit">Register Fox</Button>
             </Form>
         </Container>
-    )
-}
+    )   
+  }
+
 
 export default UpdateFox

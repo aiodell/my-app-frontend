@@ -21,22 +21,12 @@ function RegisterNewFox({ addFox }) {
           .then((foxData) => {
             addFox(foxData)
             setFormData({ })
-<<<<<<< HEAD
-=======
             e.target.reset()
->>>>>>> 7471bf126c7b16048aca61f85979369d83cbd739
           })
           e.target.reset()
     }
 
     function handleChange(e){ setFormData({...formData, [e.target.id] : e.target.value }) }
-
-    // redirect the page to the fox page
-    const history = useHistory()
-    const changeRoute = () =>{ 
-        let path = `/foxes`; 
-        history.push(path);
-    }
 
     return(
         <Container>
@@ -73,7 +63,7 @@ function RegisterNewFox({ addFox }) {
                     <Form.Control type="text" placeholder= "Show the floof"/>
                 </Form.Group>
                 <br />
-                <Button type ="submit" className="submit"onClick={changeRoute}>Register Fox</Button>
+                <Button type ="submit" className="submit">Register Fox</Button>
             </Form>
         </Container>
     )

@@ -1,28 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import { useHistory } from "react-router-dom";
 
-function RegisterNewFox({ addFox }) {
-    const [formData, setFormData] = useState({ })
+function UpdateFox({ fox, onUpdateFox }) {
+    const [ formData, setFormData ] = useState({ })
+    const [ setFoxes, setFoxData ] = useState([])
+    const {id} = fox
+
+    // pull for the selected fox
+    useEffect( () => {
+    fetch(`http://localhost:9292/foxes/${id}`)
+      .then( res => res.json() )
+      .then( fox => {setFoxes(fox)})
+    }, [ id ])
     
     const handleSubmit = (e) => {
         e.preventDefault();
 
-          fetch("http://localhost:9292/foxes",{
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
+        fetch(`http://localhost:9292/foxes/${id}`,{
+            method: "PATCH",
+            headers: {"Content-Type": "application/json"},
             body: JSON.stringify(formData)
-          })
-          .then((r) => r.json())
-          .then((foxData) => {
-            addFox(foxData)
-            setFormData({ })
-          })
-          e.target.reset()
+            })
+            .then((r) => r.json())
+             .then((updatedFoxes) => {
+                onUpdateFox(updatedFoxes)
+                setFormData({ })
+            })
+            e.target.reset()
     }
 
     function handleChange(e){ setFormData({...formData, [e.target.id] : e.target.value }) }
@@ -69,10 +76,10 @@ function RegisterNewFox({ addFox }) {
                     <Form.Control type="text" placeholder= "Show the floof"/>
                 </Form.Group>
                 <br />
-                <Button type ="submit" className="submit"onClick={changeRoute}>Register Fox</Button>
+                <Button type ="submit" className = "submit" onClick={changeRoute}>Register Fox</Button>
             </Form>
         </Container>
     )
 }
 
-export default RegisterNewFox
+export default UpdateFox

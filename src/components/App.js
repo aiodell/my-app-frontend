@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import NavBar from './NavBar';
-import { Route, Switch } from 'react-router-dom';
+import '../styles.css';
 import Home from './Home';
+import NavBar from './NavBar';
+import React, { useState, useEffect } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import FoxContainer from './FoxContainer';
 import RegisterNewFox from './RegisterNewFox';
 import RegisterSponsor from './RegisterSponsor';
-import '../styles.css';
+
 import SponsorContainer from './SponsorContainer';
+import UpdateFox from './UpdateFox';
 
 function App() {
 
@@ -39,6 +41,10 @@ function App() {
 
   function submitFunction(obj){
     setSponsors([...sponsors, obj])
+  }
+
+  function onUpdateFox(updatedFox){
+    setFoxes()
   }
 
   return (

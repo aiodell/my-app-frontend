@@ -14,7 +14,6 @@ function FoxContainer( {foxes, handleDeleteClick} ){
 
     return(
         <div>
-            "Cute Foxes Live Here!"
             {displayFoxes}
         </div>
     )

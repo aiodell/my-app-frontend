@@ -3,7 +3,6 @@ import { useState } from "react";
 
 
 function FoxCard({fox, handleDeleteClick}) { 
-//console.log(fox)
   const {id} = fox
 
   const [showDetails, setShowDetails] = useState(false)
@@ -21,11 +20,11 @@ function FoxCard({fox, handleDeleteClick}) {
 
     )
     
-    const noDetails = (
-    <p>Click on me to learn more about me!</p>
-    )   
+  const noDetails = (
+  <p>Click on me to learn more about me!</p>
+  )   
 
-    //handle deletion of foxes
+  //handle deletion of foxes
     
   function handleDelete(){
     fetch(`http://localhost:9292/foxes/${id}`, {
@@ -35,14 +34,14 @@ function FoxCard({fox, handleDeleteClick}) {
      .then((id) => handleDeleteClick(id));
   }
 
-    return(
-        <div >
-            <h1>{fox.name}</h1>
-            <img onClick={toggleCard} src={fox.image_url} alt="cute fox"/>
-             {showDetails ? details : noDetails}
-             <button onClick={handleDelete}>Bye Bye Foxie</button>
+  return(
+      <div >
+          <h1>{fox.name}</h1>
+          <img onClick={toggleCard} src={fox.image_url} alt="cute fox"/>
+            {showDetails ? details : noDetails}
+           <button onClick={handleDelete}>Bye Bye Foxie</button>
           
-        </div>
+       </div>
     )
 }
 

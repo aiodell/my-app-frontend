@@ -36,14 +36,14 @@ function FoxCard({fox, handleDeleteClick, onUpdateFox}) {
     // redirect the page to single fox page
 
   return(
-       <div>
+       <div className="card">
           <h1>{fox.name}</h1>
           <img onClick={toggleCard} src={fox.image_url} alt="cute fox"/>
              {showDetails ? details : noDetails}
-             <Link to={`/foxes/${id}`}>
-              <button>Update Fox</button>
-             </Link>
-             <button onClick= {handleDelete}>Bye Bye Foxie</button>
+          <Link to={`/foxes/${id}`}>
+            <button>Update Fox</button>
+          </Link>
+          <button onClick= {handleDelete}>Bye Bye Foxie</button>
              
              {/* <button onClick= { addSponsor }>Add Sponsor</button> */}
        </div>

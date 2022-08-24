@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
+import { useHistory } from "react-router-dom";
 
 function RegisterNewFox({ addFox }) {
     const [formData, setFormData] = useState({ })
@@ -22,6 +23,7 @@ function RegisterNewFox({ addFox }) {
             setFormData({ })
             e.target.reset()
           })
+          e.target.reset()
     }
 
     function handleChange(e){ setFormData({...formData, [e.target.id] : e.target.value }) }
@@ -61,7 +63,7 @@ function RegisterNewFox({ addFox }) {
                     <Form.Control type="text" placeholder= "Show the floof"/>
                 </Form.Group>
                 <br />
-                <Button type ="submit" variant="success">Register Fox</Button>
+                <Button type ="submit" className="submit">Register Fox</Button>
             </Form>
         </Container>
     )

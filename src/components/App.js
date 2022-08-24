@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import NavBar from './NavBar';
-import { Route, Switch } from 'react-router-dom';
+import '../styles.css';
 import Home from './Home';
+import NavBar from './NavBar';
+import React, { useState, useEffect } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import FoxContainer from './FoxContainer';
 import RegisterNewFox from './RegisterNewFox';
 import RegisterSponsor from './RegisterSponsor';
-import '../styles.css';
 import SponsorContainer from './SponsorContainer';
+import UpdateFox from './UpdateFox';
 
 function App() {
 
@@ -41,6 +42,11 @@ function App() {
     setSponsors([...sponsors, obj])
   }
 
+  function onUpdateFox(updatedFox){
+    const freshFox = foxes.map(fox => fox.id === updatedFox.id ? updatedFox : fox)
+    setFoxes(freshFox)
+  }
+
   return (
     <div>
       <NavBar />
@@ -59,6 +65,9 @@ function App() {
         <Route exact path="/addsponsor">
           <RegisterSponsor submitFunction={submitFunction}/>
           <SponsorContainer sponsors = { sponsors }/>
+        </Route>
+        <Route exact path="/foxes/:id">
+            <UpdateFox onUpdateFox = { onUpdateFox } />
         </Route>
         <Route exact path="/">
           <Home />

@@ -40,17 +40,17 @@ function FoxCard({fox, handleDeleteClick, sponsors}) {
   }
 
   function addSponsor(){
-    
+
   }
 
-    return(
-        <div >
-            <h1>{fox.name}</h1>
-            <img onClick={toggleCard} src={fox.image_url} alt="cute fox"/>
-             {showDetails ? details : noDetails}
-             <button onClick={handleDelete}>Bye Bye Foxie</button>
-        </div>
-    )
+  return(
+      <div >
+          <h1>{fox.name}</h1>
+          <img onClick={toggleCard} src={fox.image_url} alt="cute fox"/>
+            {showDetails ? details : noDetails}
+            <button onClick={handleDelete}>Bye Bye Foxie</button>
+      </div>
+  )
 }
 
 export default FoxCard;

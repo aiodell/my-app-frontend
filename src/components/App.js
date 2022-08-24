@@ -33,11 +33,9 @@ function App() {
 
 
   function handleDeleteClick(deletedFox){
-    const updatedFoxes = foxes.filter((fox) => fox.id!==deletedFox)
+    const updatedFoxes = foxes.filter((fox) => fox.id !== deletedFox.id)
     setFoxes(updatedFoxes)
   }
-
-
 
   function submitFunction(obj){
     setSponsors([...sponsors, obj])

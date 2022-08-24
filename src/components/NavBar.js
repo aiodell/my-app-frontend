@@ -12,7 +12,7 @@ function NavBar(){
         color: "white"
     }
     return (
-        <div>
+        <div className="navBarBackground">
             <NavLink to= "/" exact style={linkStyles} activeStyle={{background: "#5DBB63"}}>
                 Home
             </NavLink>

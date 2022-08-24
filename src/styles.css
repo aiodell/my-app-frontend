@@ -67,6 +67,7 @@
   float: left;}
 
 .navBarBackground {
-  background-color: #d6fb03;
+  background-image: url('https://images.unsplash.com/photo-1462834366666-a6fc4db3fb0d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTU3fHxmb3hlcyUyMHdpdGglMjBmbG93ZXJzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60');
   background-size: cover;
+  background-position-y: -250px;
 }

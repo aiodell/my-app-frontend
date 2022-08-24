@@ -2,8 +2,8 @@ import React from "react";
 
 function Home() {
     return (
-        <div>
-            "Homepage Here"
+        <div className="home">
+            <h1>Welcome to the World's Floofiest Fox Sanctuary!</h1>
         </div>
     )
 }

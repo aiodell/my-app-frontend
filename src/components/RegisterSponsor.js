@@ -35,26 +35,26 @@ function RegisterSponsor({submitFunction}){
     return(
         <div>
             <Form onSubmit={handleSubmit}>
-                <h3>Sponsor Sign Up</h3>
-                <Form.Group className="input-text" controlID="name" >
-                    <Form.Label>Name</Form.Label>
+                <h1>Sponsor Sign Up</h1>
+                <Form.Group className="mb-3" controlID="name" >
+                    <Form.Label>Name:  </Form.Label>
                     <Form.Control type="text" placeholder="Enter first and last name" onChange={(e) => setInputName(e.target.value)}/>
                 </Form.Group>
                 <br />
-                <Form.Group className="input-text" controlID="location" onChange={(e) => setInputLocation(e.target.value)}>
-                    <Form.Label>Location</Form.Label>
+                <Form.Group className="mb-3" controlID="location" onChange={(e) => setInputLocation(e.target.value)}>
+                    <Form.Label>Location:  </Form.Label>
                     <Form.Control type="text" placeholder="Enter Location" />
                 </Form.Group>
                 <br />
-                <Form.Group className="input-text" controlId="imageUrl"  >
-                    <Form.Label>Sponsor Picture</Form.Label>
+                <Form.Group className="mb-3" controlId="imageUrl"  >
+                    <Form.Label>Sponsor Picture:  </Form.Label>
                     <Form.Control type="text" placeholder="Picture...." onChange={(e) => setInputImage(e.target.value)} />
                  </Form.Group>
-        <br />
+                <br />
                 <input
                     type="submit"
                     name="submit"
-                    value="Register"
+                    value="Register Sponsor"
                     className="submit"
                 />
             </Form>

@@ -43,7 +43,6 @@
   font-size: large;
   padding : 5px 15px; 
   background: forestgreen; 
-  border:0 none;
   cursor:pointer;
   -webkit-border-radius: 5px;
   border-radius: 7px;
@@ -71,3 +70,4 @@
   background-size: cover;
   background-position-y: -250px;
 }
+

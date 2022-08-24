@@ -46,26 +46,26 @@ function UpdateFox({ onUpdateFox }) {
                     <Form.Label>Age: </Form.Label>
                     <Form.Control type="number"/>
                 </Form.Group>
-                
+                <br />
                 {/* Enter fox toy */}
                 <Form.Group className="mb-3" controlId="favorite_toy" onChange={ handleChange }>
                     <Form.Label>Favorite Toy: </Form.Label>
                     <Form.Control type="text"/>
                 </Form.Group>
-
+                <br />
                 {/* Enter personality */}
                 <Form.Group className="mb-3" controlId="personality" onChange={ handleChange }>
                     <Form.Label>Personality: </Form.Label>
                     <Form.Control type="text"/>
                 </Form.Group>
-
+                <br />
                 {/* Enter fox personality */}
                 <Form.Group className="fox-image" controlId="image_url" onChange={ handleChange }>
                     <Form.Label>Image: </Form.Label>
                     <Form.Control type="text"/>
                 </Form.Group>
                 <br />
-                <Button type ="submit" className="submit">Register Fox</Button>
+                <Button type ="submit" className="submit">Update Fox</Button>
             </Form>
         </Container>
     )   

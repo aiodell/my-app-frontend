@@ -22,7 +22,7 @@ function FoxCard({fox, handleDeleteClick, onUpdateFox}) {
 
   )
 
-  const noDetails = <h2>Click on me to learn more about me!</h2>
+  const noDetails = <p>Click on me to learn more about me!</p>
 
   //handle deletion of foxes
   function handleDelete(){
@@ -42,7 +42,7 @@ function FoxCard({fox, handleDeleteClick, onUpdateFox}) {
              {showDetails ? details : noDetails}
              <Link to={`/foxes/${id}`}>
               <button className="submit">Update Fox</button>
-              
+
              </Link>
              <button className="submit"onClick= {handleDelete}>Bye Bye Foxie</button>
              

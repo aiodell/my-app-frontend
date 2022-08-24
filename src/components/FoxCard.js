@@ -2,7 +2,9 @@ import React from "react";
 import { useState } from "react";
 
 
-function FoxCard({fox}) { 
+function FoxCard({fox, handleDeleteClick}) { 
+//console.log(fox)
+  const {id} = fox
 
   const [showDetails, setShowDetails] = useState(false)
 
@@ -20,16 +22,25 @@ function FoxCard({fox}) {
     )
     
     const noDetails = (
-    <h1></h1>
+    <p>Click on me to learn more about me!</p>
     )   
+
+    //handle deletion of foxes
+    
+  function handleDelete(){
+    fetch(`http://localhost:9292/foxes/${id}`, {
+      method: "DELETE",
+   })
+     .then((r) => r.json())
+     .then((id) => handleDeleteClick(id));
+  }
 
     return(
         <div >
             <h1>{fox.name}</h1>
             <img onClick={toggleCard} src={fox.image_url} alt="cute fox"/>
              {showDetails ? details : noDetails}
-         
-          
+             <button onClick={handleDelete}>Bye Bye Foxie</button>
           
         </div>
     )

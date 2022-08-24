@@ -31,6 +31,14 @@ function App() {
     .then(sponsorData => setSponsors(sponsorData))
   }, [] );
 
+
+  function handleDeleteClick(deletedFox){
+    const updatedFoxes = foxes.filter((fox) => fox.id!==deletedFox)
+    setFoxes(updatedFoxes)
+  }
+
+
+
   function submitFunction(obj){
     setSponsors([...sponsors, obj])
   }
@@ -40,7 +48,10 @@ function App() {
       <NavBar />
       <Switch>
         <Route exact path="/foxes">
-          <FoxContainer foxes = { foxes }/>
+          <FoxContainer 
+          foxes = { foxes }
+          handleDeleteClick = {handleDeleteClick}
+          />
         </Route>
         <Route exact path="/addfox">
           <RegisterNewFox 

@@ -34,31 +34,31 @@ function RegisterNewFox({ addFox }) {
             <Form onSubmit = { handleSubmit }>
 
                 {/* Enter fox name */}
-                <Form.Group className="mb-3" controlId="name" onChange= { handleChange }>
+                <Form.Group class="mb-3" controlId="name" onChange= { handleChange }>
                     <Form.Label>Name: </Form.Label>
                     <Form.Control type="text" placeholder= "Fox name"/>
                 </Form.Group>
-
+                <br />
                 {/* Enter fox age */}
-                <Form.Group className="mb-3" controlId="age" onChange= { handleChange }>
+                <Form.Group class="mb-3" controlId="age" onChange= { handleChange }>
                     <Form.Label>Age: </Form.Label>
                     <Form.Control type="number" placeholder= "Fox age"/>
                 </Form.Group>
-                
+                <br />
                 {/* Enter fox toy */}
-                <Form.Group className="mb-3" controlId="favorite_toy" onChange= { handleChange }>
+                <Form.Group class="mb-3" controlId="favorite_toy" onChange= { handleChange }>
                     <Form.Label>Favorite Toy: </Form.Label>
                     <Form.Control type="text" placeholder= "Favorite toy"/>
                 </Form.Group>
-
+                <br />
                 {/* Enter personality */}
-                <Form.Group className="mb-3" controlId="personality" onChange= { handleChange }>
+                <Form.Group class="mb-3" controlId="personality" onChange= { handleChange }>
                     <Form.Label>Personality: </Form.Label>
                     <Form.Control type="text" placeholder= "Enter personality"/>
                 </Form.Group>
-
-                {/* Enter fox personality */}
-                <Form.Group className="fox-image" controlid="image_url" onChange= { handleChange }>
+                <br />
+                {/* /* Enter fox personality */}
+                <Form.Group class="fox-image" controlid="image_url" onChange= { handleChange }>
                     <Form.Label>Image: </Form.Label>
                     <Form.Control type="text" placeholder= "Show the floof"/>
                 </Form.Group>

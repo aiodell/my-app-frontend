@@ -51,9 +51,9 @@ function FoxCard({fox, handleDeleteClick, sponsors}) {
           <img onClick={toggleCard} src={fox.image_url} alt="cute fox"/>
              {showDetails ? details : noDetails}
              <Link to={`/foxes/${id}`}>
-              <button>Update Fox</button>
+              <button className="submit">Update Fox</button>
              </Link>
-             <button onClick= {handleDelete}>Bye Bye Foxie</button>
+             <button className="submit"onClick= {handleDelete}>Bye Bye Foxie</button>
        </div>
   )
 }

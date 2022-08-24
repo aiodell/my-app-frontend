@@ -39,10 +39,10 @@
 }
 
 .submit {
-  background-color: blue;
+  background-color: forestgreen;
   font-size: large;
   padding : 5px 15px; 
-  background: blue; 
+  background: forestgreen; 
   border:0 none;
   cursor:pointer;
   -webkit-border-radius: 5px;
@@ -66,4 +66,7 @@
   text-align: center;
   float: left;}
 
-
+.navBarBackground {
+  background-color: #d6fb03;
+  background-size: cover;
+}

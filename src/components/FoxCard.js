@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 
 
-function FoxCard({fox, handleDeleteClick}) { 
+function FoxCard({fox, handleDeleteClick, sponsors}) { 
 //console.log(fox)
   const {id} = fox
 
@@ -11,12 +11,12 @@ function FoxCard({fox, handleDeleteClick}) {
   const toggleCard = () => {
     setShowDetails((previousDetails)=> !previousDetails)
   }
-
     const details =  (
         <div>
             <p>Age: {fox.age}</p>
             <p>Personality: {fox.personality}</p>
             <p>Favorite Toy: {fox.favorite_toy}</p>
+            <h4>Sponsored: {fox.sponsored ? "Yes" : "No"} </h4>
         </div>
 
     )
@@ -35,13 +35,20 @@ function FoxCard({fox, handleDeleteClick}) {
      .then((id) => handleDeleteClick(id));
   }
 
+  function updateFoxDetails(){
+
+  }
+
+  function addSponsor(){
+    
+  }
+
     return(
         <div >
             <h1>{fox.name}</h1>
             <img onClick={toggleCard} src={fox.image_url} alt="cute fox"/>
              {showDetails ? details : noDetails}
              <button onClick={handleDelete}>Bye Bye Foxie</button>
-          
         </div>
     )
 }

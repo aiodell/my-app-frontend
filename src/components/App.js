@@ -51,6 +51,7 @@ function App() {
           <FoxContainer 
           foxes = { foxes }
           handleDeleteClick = {handleDeleteClick}
+          sponsors = { sponsors }
           />
         </Route>
         <Route exact path="/addfox">

@@ -1,13 +1,25 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Form from 'react-bootstrap/Form';
 
 
-function FoxCard({fox, handleDeleteClick, onUpdateFox}) { 
-  
+function FoxCard({fox, handleDeleteClick, sponsors}) { 
   const [showDetails, setShowDetails] = useState(false)
   const {id} = fox
 
+  // get sponsor names
+  const sponsorDropDown = sponsors.map( sponsor => {
+    const name = sponsor.name
+    
+    return(
+      <Form.Select aria-label="sponsor names">
+        <option key = {sponsor.id} value= { name }>{ name }</option>
+      </Form.Select>
+    )
+  })
+  
+  // display card information
   const toggleCard = () => {
     setShowDetails((previousDetails)=> !previousDetails)
   }
@@ -17,7 +29,7 @@ function FoxCard({fox, handleDeleteClick, onUpdateFox}) {
           <p>Age: {fox.age}</p>
           <p>Personality: {fox.personality}</p>
           <p>Favorite Toy: {fox.favorite_toy}</p>
-          <h4>Sponsored: {fox.sponsored ? "Yes" : "No"} </h4>
+          <h4>Sponsored: {fox.sponsored ? "Yes" : <span>{ sponsorDropDown }</span>} </h4>
       </div>
 
   )
@@ -33,8 +45,6 @@ function FoxCard({fox, handleDeleteClick, onUpdateFox}) {
      .then((id) => handleDeleteClick(id));
   }
 
-    // redirect the page to single fox page
-
   return(
        <div>
           <h1>{fox.name}</h1>
@@ -44,8 +54,6 @@ function FoxCard({fox, handleDeleteClick, onUpdateFox}) {
               <button>Update Fox</button>
              </Link>
              <button onClick= {handleDelete}>Bye Bye Foxie</button>
-             
-             {/* <button onClick= { addSponsor }>Add Sponsor</button> */}
        </div>
   )
 }

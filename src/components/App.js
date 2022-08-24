@@ -60,11 +60,13 @@ function App() {
         <Route exact path="/addfox">
           <RegisterNewFox 
           addFox = { addFox }
-          foxes = { foxes }/>
+          foxes = { foxes }
+          sponsors = { sponsors }/>
         </Route>
         <Route exact path="/addsponsor">
           <RegisterSponsor submitFunction={submitFunction}/>
-          <SponsorContainer sponsors = { sponsors }/>
+          <SponsorContainer 
+          sponsors = { sponsors }/>
         </Route>
         <Route exact path="/foxes/:id">
             <UpdateFox onUpdateFox = { onUpdateFox } />

@@ -10,16 +10,18 @@ function RegisterNewFox({ addFox }) {
         e.preventDefault();
 
           fetch("http://localhost:9292/foxes",{
-          method : "POST",
-          headers : { "Content-Type" : "application/json"},
-          body : JSON.stringify(formData)
-        })
-        .then(resp => resp.json())
-        .then((foxData) => {
-          addFox(foxData);
-          setFormData({ });
-          e.target.reset();
-        })
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData)
+          })
+          .then((r) => r.json())
+          .then((foxData) => {
+            addFox(foxData)
+            setFormData({ })
+            e.target.reset
+          })
     }
 
     function handleChange(e){ setFormData({...formData, [e.target.id] : e.target.value }) }

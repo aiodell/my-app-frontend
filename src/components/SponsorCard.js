@@ -1,6 +1,7 @@
 import React from "react";
 
 function SponsorCard({name, image, location, numOfFoxes}) {
+    
     return(
         <div className="sponsorCard">
             <h1>{name}</h1>

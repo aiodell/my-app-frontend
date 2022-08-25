@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
-import { useHistory } from "react-router-dom";
 
 function UpdateFox({ onUpdateFox }) {
     const [ fox, setFox ] = useState([])
@@ -34,7 +33,8 @@ function UpdateFox({ onUpdateFox }) {
        e.target.reset()
     }
 
-    function handleChange(e){ setFormData({...formData, [e.target.id] : e.target.value }) }
+    function handleChange(e){ 
+      setFormData({...formData, [e.target.id] : e.target.value }) }
 
     return(
         <Container>
@@ -44,7 +44,7 @@ function UpdateFox({ onUpdateFox }) {
                 {/* Enter fox age */}
                 <Form.Group className="mb-3" controlId="age" onChange={ handleChange }>
                     <Form.Label>Age: </Form.Label>
-                    <Form.Control type="number"/>
+                    <Form.Control type="text"/>
                 </Form.Group>
                 <br />
                 {/* Enter fox toy */}

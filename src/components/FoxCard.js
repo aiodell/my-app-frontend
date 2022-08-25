@@ -33,11 +33,7 @@ function FoxCard({fox, handleDeleteClick}) {
   }
 
   return(
-<<<<<<< HEAD
        <div className="foxCard">
-=======
-       <div className= "card">
->>>>>>> main
           <h1>{fox.name}</h1>
           <img onClick={toggleCard} src={fox.image_url} alt="cute fox"/>
              {showDetails ? details : noDetails}

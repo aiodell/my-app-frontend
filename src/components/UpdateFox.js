@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 
-function UpdateFox({ onUpdateFox }) {
+function UpdateFox({ onUpdateFox, sponsors }) {
     const [ fox, setFox ] = useState([])
     const [ formData, setFormData ] = useState({ })
 
@@ -32,6 +32,12 @@ function UpdateFox({ onUpdateFox }) {
       })
        e.target.reset()
     }
+
+    // map through the sponsor's names
+    const sponsor_name = sponsors.map(( sponsor ) => {
+        const name = sponsor.name
+        return( <option key={ sponsor.id } value={ sponsor.id }>{ name }</option> )
+    })
 
     function handleChange(e){ 
       setFormData({...formData, [e.target.id] : e.target.value }) }
@@ -63,6 +69,13 @@ function UpdateFox({ onUpdateFox }) {
                 <Form.Group className="fox-image" controlId="image_url" onChange={ handleChange }>
                     <Form.Label>Image: </Form.Label>
                     <Form.Control type="text"/>
+                </Form.Group>
+                <br />
+                <Form.Group className="mb-3" controlId="sponsor_id" onChange={ handleChange }>
+                    <Form.Select>
+                        <option value= {sponsor_name}>Choose Sponsor</option>
+                        { sponsor_name }
+                    </Form.Select>
                 </Form.Group>
                 <br />
                 <Button type ="submit" className="submit">Update Fox</Button>

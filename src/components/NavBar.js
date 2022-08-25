@@ -23,7 +23,7 @@ function NavBar(){
                 Register Fox
             </NavLink>
             <NavLink to= "/addsponsor" exact style={linkStyles} activeStyle={{background: "#5DBB63"}}>
-                Register Sponsor
+                Sponsors
             </NavLink>
         </div>
     )

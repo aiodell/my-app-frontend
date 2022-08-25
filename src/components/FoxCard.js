@@ -16,16 +16,9 @@ function FoxCard({fox, handleDeleteClick}) {
           <p>Age: {fox.age}</p>
           <p>Personality: {fox.personality}</p>
           <p>Favorite Toy: {fox.favorite_toy}</p>
-          <p>Sponsor: {sponsorName}</p>
+          <p>Sponsor: </p>
       </div>
   )
-
-  // get all sponsors
-  useEffect( () => {
-    fetch( 'http://localhost:9292/sponsors/:id')
-    .then ( res => res.json() )
-    .then(sponsorData => setSponsors(sponsorData))
-  }, [] );
 
   const noDetails = <p>Click on me to learn more about me!</p>
 
@@ -46,10 +39,6 @@ function FoxCard({fox, handleDeleteClick}) {
              <Link to={`/foxes/${id}`}>
               <button className="submit">Update Fox</button>
              </Link>
-              {fox.sponsored ? <h3>Thank you for helping me!</h3> :
-              <Link to={`/foxes/${id}/addsponsor`}>
-              <button className="submit">Add Sponsor</button>
-              </Link>}
              <button className="submit"onClick= {handleDelete}>Bye Bye Foxie</button>
        </div>
   )

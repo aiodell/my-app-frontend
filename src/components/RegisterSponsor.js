@@ -33,8 +33,8 @@ function RegisterSponsor({submitFunction}){
     }
 
     return(
-        <div>
-            <Form onSubmit={handleSubmit}>
+        <div className="sponsorForm">
+            <Form onSubmit={handleSubmit} className="test">
                 <h1>Sponsor Sign Up</h1>
                 <Form.Group className="mb-3" controlID="name" >
                     <Form.Label>Name:  </Form.Label>

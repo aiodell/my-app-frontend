@@ -15,7 +15,7 @@ function FoxContainer( {foxes, handleDeleteClick, sponsors} ){
     })
 
     return(
-        <div className="cards">
+        <div className="foxCards">
             {displayFoxes}
         </div>
     )

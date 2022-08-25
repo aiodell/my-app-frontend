@@ -36,7 +36,7 @@ function FoxCard({fox, handleDeleteClick, onUpdateFox}) {
     // redirect the page to single fox page
 
   return(
-       <div className="card">
+       <div className="foxCard">
           <h1>{fox.name}</h1>
           <img onClick={toggleCard} src={fox.image_url} alt="cute fox"/>
              {showDetails ? details : noDetails}

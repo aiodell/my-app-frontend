@@ -14,7 +14,7 @@ function SponsorContainer( { sponsors } ){
         )
     })
     return(
-        <div>
+        <div className="sponsorCards">
             {displaySponsors}
         </div>
     )

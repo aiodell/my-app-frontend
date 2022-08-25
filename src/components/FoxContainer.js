@@ -14,7 +14,7 @@ function FoxContainer( {foxes, handleDeleteClick, onUpdateFox} ){
     })
 
     return(
-        <div className="cards">
+        <div className="foxCards">
             {displayFoxes}
         </div>
     )

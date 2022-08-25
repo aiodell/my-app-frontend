@@ -45,6 +45,7 @@ function UpdateFox({ onUpdateFox, sponsors }) {
     return(
         <Container>
             <h1>Update {fox.name}'s infomation!</h1>
+            <img src= {fox.image_url} alt = "foxes"/>
             <Form onSubmit = { updateFox }>
 
                 {/* Enter fox age */}

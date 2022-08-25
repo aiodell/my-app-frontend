@@ -43,11 +43,10 @@ function UpdateFox({ onUpdateFox, sponsors }) {
       setFormData({...formData, [e.target.id] : e.target.value }) }
 
     return(
-        <Container>
+        <Container className="updateFox">
+            <Form onSubmit = { updateFox } className="foxUpdateCard">
             <h1>Update {fox.name}'s infomation!</h1>
             <img src= {fox.image_url} alt = "foxes"/>
-            <Form onSubmit = { updateFox }>
-
                 {/* Enter fox age */}
                 <Form.Group className="mb-3" controlId="age" onChange={ handleChange }>
                     <Form.Label>Age: </Form.Label>

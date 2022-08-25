@@ -8,7 +8,6 @@ import RegisterNewFox from './RegisterNewFox';
 import RegisterSponsor from './RegisterSponsor';
 import SponsorContainer from './SponsorContainer';
 import UpdateFox from './UpdateFox';
-import AddSponsor from './AddSponsor'
 
 function App() {
 
@@ -44,13 +43,8 @@ function App() {
   }
 
   function onUpdateFox(updatedFox){
-    const freshFox = foxes.map(fox => fox.id === updatedFox.id ? updatedFox : fox)
+    const freshFox = foxes.map(fox => fox === updatedFox? updatedFox : fox)
     setFoxes(freshFox)
-  }
-
-  function onSponsorUpdate(newSponsor){
-    const newPartner = foxes.map(fox => fox.sponsor_id === newSponsor.id ? fox.sponsor_id = newSponsor : fox)
-    setFoxes(newPartner)
   }
 
   return (
@@ -73,11 +67,8 @@ function App() {
           <RegisterSponsor submitFunction={submitFunction}/>
         </Route>
         <Route exact path="/foxes/:id">
-            <UpdateFox onUpdateFox = { onUpdateFox } />
-        </Route>
-        <Route exact path= "/foxes/:id/addsponsor">
-            <AddSponsor 
-            onSponsorUpdate = { onSponsorUpdate }
+            <UpdateFox 
+            onUpdateFox = { onUpdateFox } 
             sponsors = { sponsors }/>
         </Route>
         <Route exact path="/">

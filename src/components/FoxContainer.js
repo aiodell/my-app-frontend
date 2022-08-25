@@ -1,7 +1,8 @@
 import React from "react";
 import FoxCard from './FoxCard';
+import SponsorContainer from './SponsorContainer'
 
-function FoxContainer( {foxes, handleDeleteClick} ){
+function FoxContainer( {foxes, handleDeleteClick, } ){
     const displayFoxes = foxes.map( fox => {
         return(
             <FoxCard 

@@ -1,24 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Form from 'react-bootstrap/Form';
 
-
-function FoxCard({fox, handleDeleteClick, sponsors}) { 
+function FoxCard({fox, handleDeleteClick}) { 
   const [showDetails, setShowDetails] = useState(false)
   const {id} = fox
 
-  // get sponsor names
-  const sponsorDropDown = sponsors.map( sponsor => {
-    const name = sponsor.name
-    
-    return(
-      <Form.Select aria-label="sponsor names">
-        <option key = {sponsor.id} value= { name }>{ name }</option>
-      </Form.Select>
-    )
-  })
-  
   // display card information
   const toggleCard = () => {
     setShowDetails((previousDetails)=> !previousDetails)
@@ -29,7 +16,7 @@ function FoxCard({fox, handleDeleteClick, sponsors}) {
           <p>Age: {fox.age}</p>
           <p>Personality: {fox.personality}</p>
           <p>Favorite Toy: {fox.favorite_toy}</p>
-          <h4>Sponsored: {fox.sponsored ? "Yes" : <span>{ sponsorDropDown }</span>} </h4>
+          <p>Sponsor: {fox.sponsor_id}</p>
       </div>
 
   )
@@ -46,13 +33,17 @@ function FoxCard({fox, handleDeleteClick, sponsors}) {
   }
 
   return(
-       <div>
+       <div className= "card">
           <h1>{fox.name}</h1>
           <img onClick={toggleCard} src={fox.image_url} alt="cute fox"/>
              {showDetails ? details : noDetails}
              <Link to={`/foxes/${id}`}>
               <button className="submit">Update Fox</button>
              </Link>
+              {fox.sponsored ? <h3>Thank you for helping me!</h3> :
+              <Link to={`/foxes/${id}/addsponsor`}>
+              <button className="submit">Add Sponsor</button>
+              </Link>}
              <button className="submit"onClick= {handleDelete}>Bye Bye Foxie</button>
        </div>
   )

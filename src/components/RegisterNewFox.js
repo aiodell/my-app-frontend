@@ -29,9 +29,10 @@ function RegisterNewFox({ addFox }) {
     function handleChange(e){ setFormData({...formData, [e.target.id] : e.target.value }) }
 
     return(
-        <Container>
+        <div className="registerFox">
+        <Container className="registerForm">
             <h1>Register A New Fox Buddy!</h1>
-            <Form onSubmit = { handleSubmit }>
+            <Form onSubmit = { handleSubmit } >
 
                 {/* Enter fox name */}
                 <Form.Group class="mb-3" controlId="name" onChange= { handleChange }>
@@ -66,6 +67,7 @@ function RegisterNewFox({ addFox }) {
                 <Button type ="submit" className="submit">Register Fox</Button>
             </Form>
         </Container>
+        </div>
     )
 }
 

@@ -34,7 +34,7 @@ function RegisterSponsor({submitFunction}){
 
     return(
         <div className="sponsorForm">
-            <Form onSubmit={handleSubmit} className="test">
+            <Form onSubmit={handleSubmit}>
                 <h1>Sponsor Sign Up</h1>
                 <Form.Group className="mb-3" controlID="name" >
                     <Form.Label>Name:  </Form.Label>

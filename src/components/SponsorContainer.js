@@ -14,8 +14,8 @@ function SponsorContainer( { sponsors } ){
         )
     })
     return(
-        <div className="sponsorCards">
-            {displaySponsors}
+        <div>
+            <h2 className="sponsorCards">{displaySponsors}</h2>
         </div>
     )
 }

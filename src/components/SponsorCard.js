@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 function SponsorCard({sponsor}) {
     const [ foxName, setFoxName ] = useState([])
 
+    // obtain the fox names associated with the sponsor id
     useEffect( () => {
         fetch(`http://localhost:9292/sponsors/${sponsor.id}`)
         .then( res => res.json() )
@@ -22,7 +23,6 @@ function SponsorCard({sponsor}) {
             <h3>Location: {sponsor.location}</h3>
             <h3>Foxes sponsored: </h3>
             <p>{names}</p>
-            
         </div>
     )
 }

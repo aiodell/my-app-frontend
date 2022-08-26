@@ -4,19 +4,17 @@ import { Link } from "react-router-dom";
 
 function FoxCard({fox, handleDeleteClick}) { 
   const [showDetails, setShowDetails] = useState(false)
-  const {id} = fox
+  const { id } = fox
 
   // display card information
-  const toggleCard = () => {
-    setShowDetails((previousDetails)=> !previousDetails)
-  }
+  const toggleCard = () => { setShowDetails((previousDetails)=> !previousDetails) }
 
   const details =  (
-      <div>
-          <p>Age: {fox.age}</p>
-          <p>Personality: {fox.personality}</p>
-          <p>Favorite Toy: {fox.favorite_toy}</p>
-      </div>
+    <div>
+        <p>Age: {fox.age}</p>
+        <p>Personality: {fox.personality}</p>
+        <p>Favorite Toy: {fox.favorite_toy}</p>
+    </div>
   )
 
   const noDetails = <p>Click on me to learn more about me!</p>
@@ -31,18 +29,24 @@ function FoxCard({fox, handleDeleteClick}) {
   }
 
   return(
-       <div className= "foxCard">
-          <h1>{fox.name}</h1>
-          <img onClick={toggleCard} src={fox.image_url} alt="cute fox"/>
-             {showDetails ? details : noDetails}
-             <Link to={`/foxes/${id}`}>
-              <button className="submit">It's My birthday!</button>
-             </Link>
-             <Link to={`/foxes/${id}/addsponsor`}>
-              <button className="submit">Add or Change Sponsor</button>
-             </Link>
-             <button className="submit"onClick= {handleDelete}>Bye Bye Foxie</button>
-       </div>
+    <div className= "foxCard">
+      <h1>{fox.name}</h1>
+      <img onClick={toggleCard} src={fox.image_url} alt="cute fox"/>
+          {showDetails ? details : noDetails}
+
+          {/* birthday button */}
+          <Link to={`/foxes/${id}`}>
+            <button className="submit">It's My birthday!</button>
+          </Link>
+
+          {/* sponsor button */}
+          <Link to={`/foxes/${id}/addsponsor`}>
+            <button className="submit">Add or Change Sponsor</button>
+          </Link>
+
+          {/* delete button */}
+          <button className="submit"onClick= {handleDelete}>Bye Bye Foxie</button>
+    </div>
   )
 }
 

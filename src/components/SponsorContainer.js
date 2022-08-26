@@ -1,21 +1,12 @@
 import React from "react";
 import SponsorCard from "./SponsorCard";
 
-function SponsorContainer( { sponsors, foxes } ){
+function SponsorContainer( { sponsors } ){
     const displaySponsors = sponsors.map( sponsor => {
-        return(
-            <SponsorCard
-            key = {sponsor.id}
-            sponsor = {sponsor}
-            />
-        )
+        return( <SponsorCard key = {sponsor.id} sponsor = {sponsor}/> )
     })
 
-    return(
-        <div>
-            <h2 className="sponsorCards">{displaySponsors}</h2>
-        </div>
-    )
+    return( <h2 className="sponsorCards">{displaySponsors}</h2> )
 }
 
 export default SponsorContainer

@@ -43,7 +43,7 @@ function RegisterNewFox({ addFox }) {
                 {/* Enter fox age */}
                 <Form.Group class="mb-3" controlId="age" onChange= { handleChange }>
                     <Form.Label>Age: </Form.Label>
-                    <Form.Control type="number" placeholder= "Fox age"/>
+                    <Form.Control type="text" placeholder= "Fox age"/>
                 </Form.Group>
                 <br />
                 {/* Enter fox toy */}
@@ -59,7 +59,7 @@ function RegisterNewFox({ addFox }) {
                 </Form.Group>
                 <br />
                 {/* /* Enter fox personality */}
-                <Form.Group class="fox-image" controlid="image_url" onChange= { handleChange }>
+                <Form.Group class="fox-image" controlId="image_url" onChange= { handleChange }>
                     <Form.Label>Image: </Form.Label>
                     <Form.Control type="text" placeholder= "Show the floof"/>
                 </Form.Group>

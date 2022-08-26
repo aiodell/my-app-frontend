@@ -1,5 +1,6 @@
 import React from "react";
 import FoxCard from './FoxCard';
+import Container from 'react-bootstrap/Container'
 
 function FoxContainer( {foxes, handleDeleteClick, sponsors} ){
   const displayFoxes = foxes.map( fox => {
@@ -14,9 +15,9 @@ function FoxContainer( {foxes, handleDeleteClick, sponsors} ){
   })
 
   return(
-    <div className="foxCards">
+    <Container className="fox-cards">
       {displayFoxes}
-    </div>
+    </Container>
   )
 }
 

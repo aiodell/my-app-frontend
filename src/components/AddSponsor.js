@@ -43,7 +43,7 @@ function UpdateFox({ onSponsorAdd, sponsors }) {
 
   return(
     <Container className="updateFox">
-      <Form onSubmit = {addSponsor} className="foxUpdateCard">
+      <Form onSubmit = {addSponsor} className="foxUpdateCardSponsor">
       <h1>Add or Change {fox.name}'s Sponsor</h1>
       <img src= {fox.image_url} alt = "foxes"/>
           <Form.Group className="mb-3" controlId="sponsor_id" onChange={ handleChange }>

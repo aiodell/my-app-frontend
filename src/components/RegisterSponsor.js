@@ -36,12 +36,12 @@ function RegisterSponsor({submitFunction}){
         <div className="sponsorForm">
             <Form onSubmit={handleSubmit}>
                 <h1>Sponsor Sign Up</h1>
-                <Form.Group className="mb-3" controlID="name" >
+                <Form.Group className="mb-3" controlId="name" >
                     <Form.Label>Name:  </Form.Label>
                     <Form.Control type="text" placeholder="Enter first and last name" onChange={(e) => setInputName(e.target.value)}/>
                 </Form.Group>
                 <br />
-                <Form.Group className="mb-3" controlID="location" onChange={(e) => setInputLocation(e.target.value)}>
+                <Form.Group className="mb-3" controlId="location" onChange={(e) => setInputLocation(e.target.value)}>
                     <Form.Label>Location:  </Form.Label>
                     <Form.Control type="text" placeholder="Enter Location" />
                 </Form.Group>

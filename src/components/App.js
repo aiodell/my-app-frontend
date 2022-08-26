@@ -21,9 +21,6 @@ function App() {
     .then(foxData => setFoxes(foxData))
   }, [] );
 
-  const addFox = (newFox) => {
-    setFoxes([...foxes, newFox])
-  }
 
   // get all sponsors
   useEffect( () => {
@@ -32,18 +29,25 @@ function App() {
     .then(sponsorData => setSponsors(sponsorData))
   }, [] );
 
-
+  // add delete function
   function handleDeleteClick(deletedFox){
     const updatedFoxes = foxes.filter((fox) => fox.id !== deletedFox.id)
     setFoxes(updatedFoxes)
   }
 
+  // add sponsors function
   function submitFunction(obj){
     setSponsors([...sponsors, obj])
   }
 
+  // add fox function
+  const addFox = (newFox) => {
+    setFoxes([...foxes, newFox])
+  }
+
+  // add update fox function
   function onUpdateFox(updatedFox){
-    const freshFox = foxes.map(fox => fox === updatedFox? updatedFox : fox)
+    const freshFox = foxes.map(fox => fox.id === updatedFox.id? updatedFox : fox)
     setFoxes(freshFox)
   }
 
@@ -63,13 +67,15 @@ function App() {
         </Route>
         <Route exact path="/addsponsor">
           <SponsorContainer 
-          sponsors = { sponsors }/>
+          sponsors = { sponsors }
+          foxes = { foxes }/>
           <RegisterSponsor submitFunction={submitFunction}/>
         </Route>
         <Route exact path="/foxes/:id">
             <UpdateFox 
             onUpdateFox = { onUpdateFox } 
-            sponsors = { sponsors }/>
+            sponsors = { sponsors }
+            />
         </Route>
         <Route exact path="/">
           <Home />

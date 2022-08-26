@@ -16,7 +16,6 @@ function FoxCard({fox, handleDeleteClick}) {
           <p>Age: {fox.age}</p>
           <p>Personality: {fox.personality}</p>
           <p>Favorite Toy: {fox.favorite_toy}</p>
-          <p>Sponsor: </p>
       </div>
   )
 

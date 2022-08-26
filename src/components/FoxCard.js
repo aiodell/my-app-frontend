@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 
 function FoxCard({fox, handleDeleteClick}) { 
   const [showDetails, setShowDetails] = useState(false)
@@ -29,24 +31,27 @@ function FoxCard({fox, handleDeleteClick}) {
   }
 
   return(
-    <div className= "foxCard">
-      <h1>{fox.name}</h1>
-      <img onClick={toggleCard} src={fox.image_url} alt="cute fox"/>
-          {showDetails ? details : noDetails}
-
+    <Card 
+    className= "foxCard"
+    border= "dark">
+      <Card.Title className = "card-title">{fox.name}</Card.Title>
+      <Card.Img onClick={toggleCard} src={fox.image_url} alt="cute fox"/>
+        <Card.Body>
+          <Card.Text>{showDetails ? details : noDetails}</Card.Text>
+        </Card.Body>
           {/* birthday button */}
           <Link to={`/foxes/${id}`}>
-            <button className="submit">It's My birthday!</button>
+            <Button className="submit">It's My birthday!</Button>
           </Link>
 
           {/* sponsor button */}
           <Link to={`/foxes/${id}/addsponsor`}>
-            <button className="submit">Add or Change Sponsor</button>
+            <Button className="submit">Add or Change Sponsor</Button>
           </Link>
 
           {/* delete button */}
-          <button className="submit"onClick= {handleDelete}>Bye Bye Foxie</button>
-    </div>
+          <Button className="submit"onClick= {handleDelete}>Bye Bye Foxie</Button>
+    </Card>
   )
 }
 

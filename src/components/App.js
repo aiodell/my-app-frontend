@@ -8,6 +8,7 @@ import RegisterNewFox from './RegisterNewFox';
 import RegisterSponsor from './RegisterSponsor';
 import SponsorContainer from './SponsorContainer';
 import UpdateFox from './UpdateFox';
+import AddSponsor from './AddSponsor'
 
 function App() {
 
@@ -51,6 +52,12 @@ function App() {
     setFoxes(freshFox)
   }
 
+    // add update fox function
+  function onSponsorUpdate(addedSponsor){
+    const newSponsor = foxes.map(fox => fox.id === addedSponsor.id? addedSponsor : fox)
+    setFoxes(newSponsor)
+  }
+
   return (
     <div>
       <NavBar />
@@ -76,6 +83,11 @@ function App() {
             onUpdateFox = { onUpdateFox } 
             sponsors = { sponsors }
             />
+        </Route>
+        <Route exact path="/foxes/:id/addsponsor">
+          <AddSponsor 
+            onSponsorUpdate = { onSponsorUpdate } 
+            sponsors = {sponsors}/>
         </Route>
         <Route exact path="/">
           <Home />

@@ -7,8 +7,6 @@ function SponsorContainer( { sponsors, foxes } ){
             <SponsorCard
             key = {sponsor.id}
             sponsor = {sponsor}
-            image = {sponsor.image_url}
-            location = {sponsor.location}
             />
         )
     })

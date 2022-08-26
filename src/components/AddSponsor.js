@@ -1,22 +1,37 @@
-import React, { useEffect, useState } from 'react'
-import Form from 'react-bootstrap/Form'
-import Container from 'react-bootstrap/Container'
+import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
+import Form from 'react-bootstrap/Form';
+import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 
-
-function AddSponsor({ onSponsorUpdate, sponsors }){
+function UpdateFox({ onSponsorAdd, sponsors }) {
     const [ fox, setFox ] = useState([])
-    const [formData, setFormData] = useState({ })
+    const [ formData, setFormData ] = useState({ })
 
     let { id } = useParams();
-
-    // obtain fox data
+    
+    // pull for the selected fox
     useEffect( () => {
-    fetch(`http://localhost:9292/foxes/${ id }`)
+    fetch(`http://localhost:9292/foxes/${id}`)
       .then( res => res.json() )
-      .then( fox => { setFox(fox)} )
+      .then( fox => {setFox(fox)})
     }, [ id ])
+
+    function addSponsor(e) {
+      e.preventDefault()
+      fetch(`http://localhost:9292/foxes/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+      .then(res => res.json() )
+      .then( updatedFox => {
+        onSponsorAdd(updatedFox);
+      })
+       e.target.reset()
+    }
 
     // map through the sponsor's names
     const sponsor_name = sponsors.map(( sponsor ) => {
@@ -24,38 +39,26 @@ function AddSponsor({ onSponsorUpdate, sponsors }){
         return( <option key={ sponsor.id } value={ sponsor.id }>{ name }</option> )
     })
 
-    function handleNewSponsor(e) {
-        e.preventDefault()
-        fetch(`http://localhost:9292/foxes/${id}`, {
-        method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-        })
-        .then(res => res.json() )
-        .then( addedSponsor => {
-            console.log(addedSponsor);
-        })
-        console.log(formData)
-    }
-
-    function handleUpdate(e){ setFormData({...formData, [e.target.id] : e.target.value }) }
+    function handleChange(e){ 
+      setFormData({...formData, [e.target.id] : e.target.value }) }
 
     return(
-        <Container>
-            <h1>Choose {fox.name}'s Sponsor!</h1>
-            <Form onSubmit= { handleNewSponsor }></Form>
-                <Form.Group controlId="sponsor_id" onChange={ handleUpdate }>
+        <Container className="updateFox">
+            <Form onSubmit = {addSponsor} className="foxUpdateCard">
+            <h1>Add or Change {fox.name}'s Sponsor</h1>
+            <img src= {fox.image_url} alt = "foxes"/>
+                <Form.Group className="mb-3" controlId="sponsor_id" onChange={ handleChange }>
                     <Form.Select>
-                    <option value="None">Choose Sponsor</option>
-                    { sponsor_name }
+                        <option value= {sponsor_name}>Choose Sponsor</option>
+                        { sponsor_name }
                     </Form.Select>
                 </Form.Group>
-            <br />
-            <Button type= "submit" className= "submit">Sponsor Fox</Button>
+                <br />
+                <Button type ="submit" className="submit">Update Sponsor</Button>
+            </Form>
         </Container>
-    )
-}
+    )   
+  }
 
-export default AddSponsor;
+
+export default UpdateFox
